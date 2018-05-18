@@ -1,0 +1,5 @@
+// Create angular project without git repositories
+ng new angular2 --skip-git
+
+npm install --save bootstrap@3
+npm install --save fuelux
