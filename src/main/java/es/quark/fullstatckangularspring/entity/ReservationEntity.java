@@ -1,18 +1,30 @@
-package es.quark.fullstatckangularspring.model.response;
+package es.quark.fullstatckangularspring.entity;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-public class ReservationResponse {
+@Entity
+@Table(name = "Reservation")
+public class ReservationEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotNull
     private LocalDate checkin;
+
+    @NotNull
     private LocalDate checkout;
 
-    public ReservationResponse() {
+    @ManyToOne
+    private RoomEntity roomEntity;
+
+    public ReservationEntity() {
     }
 
-    public ReservationResponse(Long id, LocalDate checkin, LocalDate checkout) {
-        this.id = id;
+    public ReservationEntity(LocalDate checkin, LocalDate checkout) {
         this.checkin = checkin;
         this.checkout = checkout;
     }
@@ -39,5 +51,13 @@ public class ReservationResponse {
 
     public void setCheckout(LocalDate checkout) {
         this.checkout = checkout;
+    }
+
+    public RoomEntity getRoomEntity() {
+        return roomEntity;
+    }
+
+    public void setRoomEntity(RoomEntity roomEntity) {
+        this.roomEntity = roomEntity;
     }
 }

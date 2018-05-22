@@ -2,6 +2,8 @@ package es.quark.fullstatckangularspring.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Room")
@@ -16,6 +18,9 @@ public class RoomEntity {
 
     @NotNull
     private String price;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private List<ReservationEntity> reservationEntityList;
 
     public RoomEntity() {
     }
@@ -47,5 +52,20 @@ public class RoomEntity {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public List<ReservationEntity> getReservationEntityList() {
+        return reservationEntityList;
+    }
+
+    public void setReservationEntityList(List<ReservationEntity> reservationEntityList) {
+        this.reservationEntityList = reservationEntityList;
+    }
+
+    public void addReservationEntity(ReservationEntity reservationEntity) {
+        if (this.reservationEntityList == null) {
+            this.reservationEntityList = new ArrayList<>();
+        }
+        this.reservationEntityList.add(reservationEntity);
     }
 }

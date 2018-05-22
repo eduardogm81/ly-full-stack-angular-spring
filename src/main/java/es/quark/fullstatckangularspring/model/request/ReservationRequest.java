@@ -11,13 +11,15 @@ public class ReservationRequest {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate checkout;
 
+    private Long roomId;
+
     public ReservationRequest() {
     }
 
-    public ReservationRequest(Long id, LocalDate checkin, LocalDate checkout) {
-        this.id = id;
+    public ReservationRequest(LocalDate checkin, LocalDate checkout, Long roomId) {
         this.checkin = checkin;
         this.checkout = checkout;
+        this.roomId = roomId;
     }
 
     public Long getId() {
@@ -42,5 +44,13 @@ public class ReservationRequest {
 
     public void setCheckout(LocalDate checkout) {
         this.checkout = checkout;
+    }
+
+    public Long getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
     }
 }

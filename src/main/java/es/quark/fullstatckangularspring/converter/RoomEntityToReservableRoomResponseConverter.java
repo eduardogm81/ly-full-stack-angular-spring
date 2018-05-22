@@ -3,17 +3,17 @@ package es.quark.fullstatckangularspring.converter;
 import es.quark.fullstatckangularspring.entity.RoomEntity;
 import es.quark.fullstatckangularspring.model.Links;
 import es.quark.fullstatckangularspring.model.Self;
-import es.quark.fullstatckangularspring.model.response.ReservationResponse;
+import es.quark.fullstatckangularspring.model.response.ReservableRoomResponse;
 import es.quark.fullstatckangularspring.rest.ResourceConstants;
 import org.springframework.core.convert.converter.Converter;
 
-public class RoomEntityToReservationResponseConverter
-        implements Converter<RoomEntity, ReservationResponse> {
+public class RoomEntityToReservableRoomResponseConverter
+        implements Converter<RoomEntity, ReservableRoomResponse> {
 
     @Override
-    public ReservationResponse convert(RoomEntity roomEntity) {
+    public ReservableRoomResponse convert(RoomEntity roomEntity) {
 
-        ReservationResponse response = new ReservationResponse();
+        ReservableRoomResponse response = new ReservableRoomResponse();
         response.setId(roomEntity.getId());
         response.setRoomNumber(roomEntity.getRoomNumber());
         response.setPrice(Integer.valueOf(roomEntity.getPrice()));
